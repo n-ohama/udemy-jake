@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Page404 } from "./pages/Page404";
 import { Setting } from "./pages/Setting";
 import { UserManagement } from "./pages/UserManagement";
+import { LoginUserProvider } from "./providers/LoginUserProvider";
 import theme from "./theme";
 
 const homeRoutes = [
@@ -40,7 +41,9 @@ const Router: FC = memo(() => {
 const App: FC = memo(() => {
   return (
     <ChakraProvider theme={theme}>
-      <Router />
+      <LoginUserProvider>
+        <Router />
+      </LoginUserProvider>
     </ChakraProvider>
   );
 });
