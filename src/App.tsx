@@ -10,7 +10,6 @@ import { UserManagement } from "./pages/UserManagement";
 import theme from "./theme";
 
 const homeRoutes = [
-  { path: "/", element: <Login /> },
   { path: "home", element: <Home /> },
   { path: "home/user_management", element: <UserManagement /> },
   { path: "home/setting", element: <Setting /> },
@@ -20,6 +19,8 @@ const Router: FC = memo(() => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
+
         {homeRoutes.map((item) => {
           return (
             <Route
