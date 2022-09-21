@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { FC, memo } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HeaderLayout } from "./organisms/templates/HeaderLayout";
+import { HeaderLayout } from "./components/organisms/templates/HeaderLayout";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Page404 } from "./pages/Page404";
