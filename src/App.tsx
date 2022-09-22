@@ -1,3 +1,4 @@
+import { RecoilRoot } from "recoil";
 import { ChakraProvider } from "@chakra-ui/react";
 import { FC, memo } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -39,9 +40,11 @@ const Router: FC = memo(() => {
 
 const App: FC = memo(() => {
   return (
-    <ChakraProvider theme={theme}>
-      <Router />
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider theme={theme}>
+        <Router />
+      </ChakraProvider>
+    </RecoilRoot>
   );
 });
 

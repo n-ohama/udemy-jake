@@ -7,8 +7,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { FC, memo, useCallback, useEffect } from "react";
+import { useRecoilValue } from "recoil";
 import { UserCard } from "../components/organisms/user/UserCard";
 import { UserDetailModal } from "../components/organisms/user/UserDetailModal";
+import { LoginState } from "../global/state";
 import { useAllUsers } from "../hooks/useAllUsers";
 import { useSelectUser } from "../hooks/useSelectUser";
 
@@ -16,6 +18,7 @@ export const UserManagement: FC = memo(() => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
   const { onSelectUser, selectedUser } = useSelectUser();
+  const loginUser = useRecoilValue(LoginState);
 
   useEffect(() => getUsers(), []);
 
@@ -48,7 +51,12 @@ export const UserManagement: FC = memo(() => {
         </Wrap>
       )}
 
-      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal
+        user={selectedUser}
+        isOpen={isOpen}
+        isAdmin={loginUser?.isAdmin}
+        onClose={onClose}
+      />
     </>
   );
 });
